@@ -1,13 +1,17 @@
 name: Deploy
 on: push
 jobs:
-  lin:
+  dependencies:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install dependencies
         run: npm install
+  lin:
+    needs: dependencies
+    runs-on: ubuntu-latest
+    steps:
       - name: run lint
         run: npm run lint
   test:
