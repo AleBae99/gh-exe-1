@@ -7,11 +7,13 @@ jobs:
             - name: run lint
               run: npm lint
     test-project:
+        needs: lin-project
         runs-on: ubuntu-latest
         steps: 
             - name: run test
               run:
     deploy-project:
+        needs: test-project
         runs-on: ubuntu-latest
         steps:
             - name: run deploy
